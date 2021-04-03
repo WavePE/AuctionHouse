@@ -1,12 +1,10 @@
 package club.wavepe.xxarox.generic;
 
 import cn.nukkit.Player;
-import lombok.Getter;
 
 import java.time.Instant;
 import java.util.UUID;
 
-@Getter
 public class Bid {
     private String id;
     private String parentId;
@@ -31,5 +29,29 @@ public class Bid {
         this.bidderDisplayName = bidderDisplayName;
         this.amount = amount;
         this.timestamp = timestamp;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public String getBidderDisplayName() {
+        return bidderDisplayName;
+    }
+
+    public String getBidderUuid() {
+        return bidderUuid;
+    }
+
+    public String getParentId() {
+        return parentId;
     }
 }

@@ -1,9 +1,7 @@
 package club.wavepe.xxarox.generic;
 
 import cn.nukkit.item.Item;
-import lombok.Getter;
 
-@Getter
 public class EndedListing {
     private String id;
     private String ownerDisplayName;
@@ -39,6 +37,42 @@ public class EndedListing {
         }
         totalPrice = listing.getCurrentPrice();
         item = listing.getItem().clone();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public String getBoughtDisplayName() {
+        return boughtDisplayName;
+    }
+
+    public String getBoughtUuid() {
+        return boughtUuid;
+    }
+
+    public String getOwnerDisplayName() {
+        return ownerDisplayName;
+    }
+
+    public String getOwnerUuid() {
+        return ownerUuid;
+    }
+
+    public boolean isCoinsCollected() {
+        return coinsCollected;
+    }
+
+    public boolean isItemCollected() {
+        return itemCollected;
     }
 
     public void setCoinsCollected(boolean coinsCollected) {
