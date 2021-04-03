@@ -6,12 +6,14 @@ import club.wavepe.xxarox.provider.JsonProvider;
 import club.wavepe.xxarox.provider.Provider;
 import cn.nukkit.plugin.PluginBase;
 
+import java.util.ArrayList;
+
 public class AuctionHouse extends PluginBase {
     protected static AuctionHouse instance;
     protected Provider provider;
 
-    private Listing[] cache = new Listing[0];
-    private EndedListing[] waitForCollect = new EndedListing[0];
+    public ArrayList<Listing> cache = new ArrayList<>();
+    public ArrayList<EndedListing> waitForCollect = new ArrayList<>();
 
     @Override
     public void onLoad() {

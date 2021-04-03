@@ -4,5 +4,5 @@ version: "1.0"
 main: club.wavepe.xxarox.AuctionHouse
 description: "AuctionHouse plugin for WavePE by xxAROX#9881"
 author: "xxAROX - Jan Sohn <jansohn@hurensohn.me>"
-api-version: "1.0"
+api: "1.0.0"
 prefix: "xxAUCTIONS"
