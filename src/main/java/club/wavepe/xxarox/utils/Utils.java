@@ -11,11 +11,11 @@ public class Utils {
     private static ByteOrder byteOrder = ByteOrder.BIG_ENDIAN;
 
 
-    static String encodeItem(Item item) throws IOException {
+    public static String encodeItem(Item item) throws IOException {
         return Base64.getEncoder().encodeToString(NBTIO.write(NBTIO.putItemHelper(item), byteOrder));
     }
 
-    static Item decodeItem(String buffer) throws IOException {
+    public static Item decodeItem(String buffer) throws IOException {
         return NBTIO.getItemHelper(NBTIO.read(Base64.getDecoder().decode(buffer), byteOrder));
     }
 }
