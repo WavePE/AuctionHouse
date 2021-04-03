@@ -8,6 +8,12 @@
     <artifactId>AuctionHouse</artifactId>
     <version>1.0-SNAPSHOT</version>
     <url>https://github.com/WavePE/AuctionHouse</url>
+    <licenses>
+        <license>
+            <name>GNU</name>
+            <url>LICENSE</url>
+        </license>
+    </licenses>
 
     <developers>
         <developer>
