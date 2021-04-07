@@ -36,6 +36,7 @@ public class AuctionHouse extends PluginBase {
 
     @Override
     public void onDisable() {
+        getLogger().info("disabled");
         provider.shutdown();
     }
 
