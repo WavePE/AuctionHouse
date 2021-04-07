@@ -28,6 +28,8 @@ public class AuctionHouse extends PluginBase {
 
     @Override
     public void onEnable() {
+        getLogger().info("enabled");
+
         provider.prepare();
         provider.load(this);
     }
