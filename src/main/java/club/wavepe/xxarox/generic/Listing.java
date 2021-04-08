@@ -29,7 +29,7 @@ public class Listing {
 
     public Listing(String id, String ownerUuid, String ownerDisplayName, Item item, Integer startingPrice, Integer currentPrice, long expiresAt, List<Bid> bids){
         this.id = id;
-        this.ownerUuid = ownerUuid;;
+        this.ownerUuid = ownerUuid;
         this.ownerDisplayName = ownerDisplayName;
         this.item = item;
         this.startingPrice = startingPrice;
@@ -74,13 +74,15 @@ public class Listing {
         return bids;
     }
 
-    public Bid onBid(Player bidder, Integer amount){
+    public Bid onBid(Player bidder, Integer amount) {
         Bid bid = new Bid(bidder, amount, id);
         bids.add(0, bid);
         return bid;
     }
 
-    public void onEnd(){
-        //TODO
+    public EndedListing onEnd() {
+        //TODO: send message to owner which includes that this auction is ended.
+        //TODO: send message to lastBidder which includes that this auction is ended.
+        return new EndedListing(this, false, false);
     }
 }

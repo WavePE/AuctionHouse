@@ -20,5 +20,9 @@ public interface Provider {
 
     void onCollect(EndedListing listing);
 
+    void collectItem(EndedListing listing);
+
+    void collectMoney(EndedListing listing);
+
     void shutdown();
 }

@@ -37,7 +37,7 @@ public class JsonProvider implements Provider {
                 ArrayList<String> bidStr = (ArrayList<String>) map.get("bids");
                 bidStr.forEach((id) -> {
                     LinkedTreeMap<String, Object> map2 = ((LinkedTreeMap<String, Object>) bids.get(id));
-                    if (((String) map2.get("getParentId")).equals((String) map.get("getId"))) {
+                    if (map2.get("getParentId").equals(map.get("getId"))) {
                         resultBids.add(new Bid((String) map2.get("getId"), (String) map2.get("getParentId"), (String) map2.get("bidderUuid"), (String) map2.get("bidderDisplayName"), (int) map2.get("amount"), (long) map2.get("timestamp")));
                     }
                 });
@@ -85,6 +85,16 @@ public class JsonProvider implements Provider {
 
     @Override
     public void onCollect(EndedListing listing) {
+
+    }
+
+    @Override
+    public void collectItem(EndedListing listing) {
+
+    }
+
+    @Override
+    public void collectMoney(EndedListing listing) {
 
     }
 
