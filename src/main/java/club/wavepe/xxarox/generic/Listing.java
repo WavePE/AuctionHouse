@@ -5,6 +5,7 @@ import cn.nukkit.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Listing {
     protected String id;
@@ -17,6 +18,7 @@ public class Listing {
     protected List<Bid> bids;
 
     public Listing(Player owner, Item item, Integer startingPrice, long expiresAt) {
+        id = UUID.randomUUID().toString();
         this.ownerUuid = owner.getUniqueId().toString();
         this.ownerDisplayName = owner.getDisplayName();
         this.item = item;
