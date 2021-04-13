@@ -5,18 +5,21 @@ import club.wavepe.xxarox.generic.EndedListing;
 import club.wavepe.xxarox.generic.Listing;
 import club.wavepe.xxarox.provider.JsonProvider;
 import club.wavepe.xxarox.provider.Provider;
+import club.wavepe.xxarox.provider.economy.DummyEconomy;
 import club.wavepe.xxarox.provider.economy.EconomyInterface;
+import club.wavepe.xxarox.provider.language.DummyLanguage;
+import club.wavepe.xxarox.provider.language.LanguageInterface;
 import cn.nukkit.Player;
 import cn.nukkit.item.Item;
 import cn.nukkit.plugin.PluginBase;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class AuctionHouse extends PluginBase {
     protected static AuctionHouse instance;
     protected Provider provider;
     protected EconomyInterface economyProvider;
+    protected LanguageInterface languageInterface;
 
     public ArrayList<Listing> cache = new ArrayList<>();
     public ArrayList<EndedListing> waitForCollect = new ArrayList<>();
@@ -29,6 +32,7 @@ public class AuctionHouse extends PluginBase {
         provider = getProviderFromString(getConfig().getString("provider", "json"));
         provider.init(this);
         economyProvider = getEconomyProviderFromString(getConfig().getString("economy-provider", "json"));
+        languageInterface = new DummyLanguage();
     }
 
     @Override
@@ -48,14 +52,13 @@ public class AuctionHouse extends PluginBase {
         return instance;
     }
 
-    public Listing getListing(String marketId) { // FIXME: 04.04.2021 @FHexix maybe take a look over that function.
-        AtomicReference<Listing> listing = new AtomicReference<>();
-        cache.forEach((list -> {
-            if (marketId.equals(list.getId())) {
-                listing.set(list);
+    public Listing getListing(String marketId) {
+        for (Listing listing : cache) {
+            if (marketId.equals(listing.getId())) {
+                return listing;
             }
-        }));
-        return listing.get();
+        }
+        return null;
     }
 
     private Provider getProviderFromString(String providerType) {
@@ -69,7 +72,8 @@ public class AuctionHouse extends PluginBase {
 
     private EconomyInterface getEconomyProviderFromString(String economyPluginName) {
         switch (economyPluginName.toLowerCase()) {
-            //TODO
+            case "dummy":
+                return new DummyEconomy();
         }
         throw new RuntimeException("Economy-Interface '" + economyPluginName + "' not found!");
     }
